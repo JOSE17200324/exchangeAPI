@@ -1,6 +1,6 @@
 ### Get exchange rate data from USD to XCD
 //@no-log
-GET http://localhost:8080/api/v1
+GET {{url}}/api/v1
 Content-Type: application/json
 
 {
@@ -11,11 +11,34 @@ Content-Type: application/json
 
 ### Get message error by exchange rate code invalid
 //@no-log
-GET http://localhost:8080/api/v1
+GET {{url}}/api/v1
 Content-Type: application/json
 
 {
   "amount": 10,
   "fromCurrency": "UUU",
   "toCurrency": "XCD"
+}
+
+### Save user
+//@no-log
+POST {{url}}/user/create
+Authorization: Bearer {{token_admin}}
+Content-Type: application/json
+
+{
+  "username": "luis",
+  "password": "123",
+  "email": "luis@gmail.com",
+  "roles": ["USER"]
+}
+
+### Login
+//@no-log
+POST {{url}}/login
+Content-Type: application/json
+
+{
+  "username": "jose",
+  "password": "123"
 }
